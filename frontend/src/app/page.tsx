@@ -288,11 +288,11 @@ export default function Page() {
                     Pricing
                   </a>
                 </div>
-                <a href="#get-started">
+                {/* <a href="#launching">
                   <div className="px-3 py-2 bg-[#0F172A] rounded-md text-white text-sm">
                     Get Started
                   </div>
-                </a>
+                </a> */}
               </div>
             </div>
           </Gutter>

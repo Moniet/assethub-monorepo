@@ -69,7 +69,7 @@ const PricingCard = ({
     <div
       className={`flex flex-col gap-7 p-10 rounded-lg border bg-white sm:max-w-[350px] xs:min-w-[300px] md:min-w-[350px] ${
         isPopular
-          ? " border-primary-500 md:scale-110 shadow-lg"
+          ? " border-primary-500 lg:scale-110 lg:shadow-lg"
           : " border-slate-200 shadow"
       }`}
     >
