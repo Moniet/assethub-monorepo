@@ -288,11 +288,11 @@ export default function Page() {
                     Pricing
                   </a>
                 </div>
-                {/* <a href="#launching">
+                <a href="#launching">
                   <div className="px-3 py-2 bg-[#0F172A] rounded-md text-white text-sm">
-                    Get Started
+                    Pre-register
                   </div>
-                </a> */}
+                </a>
               </div>
             </div>
           </Gutter>
@@ -387,7 +387,7 @@ export default function Page() {
                 Discover a new level of collaboration
               </h2>
 
-              <p className="text-white text-md font-extralight tracking-wider mt-6 xs:w-full md:w-3/4 mx-auto text-center font-body leading-8">
+              <p className="text-white text-base font-extralight tracking-wider mt-6 xs:w-full md:w-2/3 mx-auto text-center font-body leading-8">
                 Filebloc enables your team to effortlessly manage Assets,
                 whether it&#39;s images, graphics, icons, or files right within
                 Slack!
@@ -437,7 +437,7 @@ export default function Page() {
               <h3 className="font-heading font-medium text-primary-900 mb-5 xs:text-2xl md:text-3xl">
                 Integration with Cloud Storage
               </h3>
-              <p className="text-sm leading-6 text-body xs:w-full md:w-2/3 lg:1/4">
+              <p className=" max-sm:text-sm  text-lg leading-8 text-body xs:w-full md:w-2/3 lg:1/4">
                 <Balance ratio={0.8}>
                   Seamlessly connect <b>Filebloc</b> with your cloud storage
                   solutions like Google Drive, Dropbox, Cloudflare, Jira, etc.
@@ -484,7 +484,7 @@ export default function Page() {
               ].map(({ title, icon }, i) => (
                 <div
                   key={i}
-                  className="flex items-center gap-2 flex-1 whitespace-nowrap md:text-sm xs:text-sm w-24"
+                  className="flex items-center gap-2 flex-1 whitespace-nowrap md:text-base xs:text-sm w-24"
                 >
                   <span className="h-auto">{icon}</span>
                   {title}
@@ -502,9 +502,9 @@ export default function Page() {
               </p>
               <h3 className="font-heading font-medium text-primary-900 mb-5 xs:text-2xl md:text-3xl">
                 Maximize Productivity, Minimize Hassle: <br />
-                FileBloc for Tech Teams
+                Filebloc for Tech Teams
               </h3>
-              <p className="text-sm leading-6 text-body xs:w-full md:w-2/3 lg:3/4">
+              <p className="max-sm:text-sm leading-8 text-body xs:w-full md:w-2/3 lg:3/4 text-lg">
                 <Balance ratio={0.8}>
                   Managing design assets effectively is critical for tech teams.
                   <b> Filebloc</b> simplifies this process, enabling you to
@@ -616,7 +616,7 @@ export default function Page() {
               <h3 className="font-heading font-medium text-primary-900 mb-5 xs:text-2xl md:text-3xl">
                 Pricing plans for teams of all sizes
               </h3>
-              <p className="text-sm leading-6 text-body xs:w-full md:w-2/3 lg:w-2/4">
+              <p className="max-sm:text-sm leading-8 text-body xs:w-full md:w-2/3 lg:w-2/4 text-lg">
                 Choose an affordable plan that’s packed with the best features
                 for engaging your audience, creating customer loyalty, and
                 driving sales.
