@@ -239,7 +239,7 @@ const SlackIcon = () => {
 
 const SlackPill = () => {
   return (
-    <div className="flex xs:text-[8px] md:text-[12px] font-body border border-[##6366F11A] bg-[#6366F11A] text-[#507EF1] rounded-full px-3 py-2 md:absolute xs:relative display-block bottom-0  right-[0] w-fit gap-2 font-medium items-center tracking-wide lg:translate-x-[40px] md:-translate-y-[100%] lg:-translate-y-[150%] whitespace-nowrap">
+    <div className="flex xs:text-[8px] md:text-[12px] font-body border border-[##6366F11A] bg-[#6366F11A] text-[#507EF1] rounded-full px-3 py-2 md:absolute xs:relative display-block bottom-0  right-[0] w-fit gap-2 font-medium items-center tracking-wide md:translate-x-[40px] md:-translate-y-[100%] lg:-translate-y-[150%] whitespace-nowrap">
       <SlackIcon /> Slack App
     </div>
   )
