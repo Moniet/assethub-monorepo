@@ -23,12 +23,6 @@ const sesClient = new SESClient({
 
 const sendEmail = async (toAddress: string) => {
   try {
-    console.log("sending email :", toAddress)
-    console.log("is sesvalid", {
-      accessKeyId: process.env.AWS_ACCESS_KEY_ID as string,
-      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY as string
-    })
-    console.log("is emailbody", !!email)
     // const emailHtmlBody = render(<PreRegister />)
 
     const sendCommand = new SendEmailCommand({
@@ -51,8 +45,9 @@ const sendEmail = async (toAddress: string) => {
       Source: "info@filebloc.com",
       ReplyToAddresses: ["info@filebloc.com"]
     })
-
-    sesClient.send(sendCommand)
+    console.log('before email  send')
+    await sesClient.send(sendCommand).then(console.log)
+    console.log('after email send')
   } catch (err) {
     console.error(err)
     throw err
