@@ -2,7 +2,7 @@ import { NextResponse } from "next/server"
 import zod from "zod"
 import { Client, fql } from "fauna"
 import { NextApiRequest } from "next"
-import PreRegister from "@/react-email-starter/emails/pre-register"
+import PreRegister from "emails/emails/pre-register"
 import { render } from "@react-email/render"
 import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses"
 
