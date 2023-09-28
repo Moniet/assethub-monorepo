@@ -45,9 +45,9 @@ const sendEmail = async (toAddress: string) => {
       Source: "info@filebloc.com",
       ReplyToAddresses: ["info@filebloc.com"]
     })
-    console.log('before email  send')
+    console.log("before email  send")
     await sesClient.send(sendCommand).then(console.log)
-    console.log('after email send')
+    console.log("after email send")
   } catch (err) {
     console.error(err)
     throw err
