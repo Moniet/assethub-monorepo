@@ -42,7 +42,7 @@ const sendEmail = async (toAddress: string) => {
           Data: "Filebloc: Thank you for registering 🙌"
         }
       },
-      Source: "info@filebloc.com",
+      Source: "Filebloc <info@filebloc.com>",
       ReplyToAddresses: ["info@filebloc.com"]
     })
     console.log("before email  send")
