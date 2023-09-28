@@ -37,7 +37,7 @@ const sendEmail = async (toAddress: string) => {
       },
       Subject: {
         Charset: "UTF-8",
-        Data: "Filbloc: Thank you for registering 🙌"
+        Data: "Filebloc: Thank you for registering 🙌"
       }
     },
     Source: "info@filebloc.com",
