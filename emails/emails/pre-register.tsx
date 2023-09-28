@@ -43,8 +43,8 @@ export default function PreRegister() {
               </Text>
               <Text style={para}>
                 Once we launch, you will be notified to be one of our very first
-                alpha users, helping us improve, add features of you want, and
-                cater to your business needs.
+                alpha users, helping us improve, add features you want,
+                and cater to your business needs.
               </Text>
               <Text style={para}>
                 Hang tight, and we&#39;ll get back to you in a jiffy! 🏃‍♂️
