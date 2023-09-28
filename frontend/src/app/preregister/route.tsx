@@ -21,30 +21,36 @@ const sesClient = new SESClient({
 })
 
 const sendEmail = async (toAddress: string) => {
-  const emailHtmlBody = render(<PreRegister />)
+  try {
+    console.log("sending email :", toAddress)
+    const emailHtmlBody = render(<PreRegister />)
 
-  const sendCommand = new SendEmailCommand({
-    Destination: {
-      CcAddresses: [],
-      ToAddresses: [toAddress]
-    },
-    Message: {
-      Body: {
-        Html: {
+    const sendCommand = new SendEmailCommand({
+      Destination: {
+        CcAddresses: [],
+        ToAddresses: [toAddress]
+      },
+      Message: {
+        Body: {
+          Html: {
+            Charset: "UTF-8",
+            Data: emailHtmlBody
+          }
+        },
+        Subject: {
           Charset: "UTF-8",
-          Data: emailHtmlBody
+          Data: "Filebloc: Thank you for registering 🙌"
         }
       },
-      Subject: {
-        Charset: "UTF-8",
-        Data: "Filebloc: Thank you for registering 🙌"
-      }
-    },
-    Source: "info@filebloc.com",
-    ReplyToAddresses: ["info@filebloc.com"]
-  })
+      Source: "info@filebloc.com",
+      ReplyToAddresses: ["info@filebloc.com"]
+    })
 
-  sesClient.send(sendCommand).catch(console.error)
+    sesClient.send(sendCommand)
+  } catch (err) {
+    console.error(err)
+    throw err
+  }
 }
 
 export async function POST(request: Request) {
@@ -64,7 +70,7 @@ export async function POST(request: Request) {
   }
 
   try {
-    console.log(email)
+    console.log({ email })
     const notexists = () => fql`Users.where(.email == ${email}).count() == 0`
     const createUser = () => fql`
       Users.create(${{ email }}) {
