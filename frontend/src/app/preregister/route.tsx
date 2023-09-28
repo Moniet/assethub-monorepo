@@ -2,9 +2,10 @@ import { NextResponse } from "next/server"
 import zod from "zod"
 import { Client, fql } from "fauna"
 import { NextApiRequest } from "next"
-import PreRegister from "emails/emails/pre-register"
+// import PreRegister from "emails/emails/pre-register"
 import { render } from "@react-email/render"
 import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses"
+import { email } from "./email"
 
 const validateEmail = zod.string().email()
 
@@ -23,7 +24,7 @@ const sesClient = new SESClient({
 const sendEmail = async (toAddress: string) => {
   try {
     console.log("sending email :", toAddress)
-    const emailHtmlBody = render(<PreRegister />)
+    // const emailHtmlBody = render(<PreRegister />)
 
     const sendCommand = new SendEmailCommand({
       Destination: {
@@ -34,7 +35,7 @@ const sendEmail = async (toAddress: string) => {
         Body: {
           Html: {
             Charset: "UTF-8",
-            Data: emailHtmlBody
+            Data: email
           }
         },
         Subject: {
