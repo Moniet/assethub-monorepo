@@ -24,6 +24,10 @@ const sesClient = new SESClient({
 const sendEmail = async (toAddress: string) => {
   try {
     console.log("sending email :", toAddress)
+    console.log("is sesvalid", {
+      accessKeyId: process.env.AWS_ACCESS_KEY_ID as string,
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY as string
+    })
     // const emailHtmlBody = render(<PreRegister />)
 
     const sendCommand = new SendEmailCommand({
