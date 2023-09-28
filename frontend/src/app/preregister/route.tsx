@@ -2,12 +2,50 @@ import { NextResponse } from "next/server"
 import zod from "zod"
 import { Client, fql } from "fauna"
 import { NextApiRequest } from "next"
+import PreRegister from "@/react-email-starter/emails/pre-register"
+import { render } from "@react-email/render"
+import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses"
 
 const validateEmail = zod.string().email()
 
 const faunaClient = new Client({
   secret: process.env.FAUNA_SECRET
 })
+
+const sesClient = new SESClient({
+  region: "eu-central-1",
+  credentials: {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID as string,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY as string
+  }
+})
+
+const sendEmail = async (toAddress: string) => {
+  const emailHtmlBody = render(<PreRegister />)
+
+  const sendCommand = new SendEmailCommand({
+    Destination: {
+      CcAddresses: [],
+      ToAddresses: [toAddress]
+    },
+    Message: {
+      Body: {
+        Html: {
+          Charset: "UTF-8",
+          Data: emailHtmlBody
+        }
+      },
+      Subject: {
+        Charset: "UTF-8",
+        Data: "Filbloc: Thank you for registering 🙌"
+      }
+    },
+    Source: "info@filebloc.com",
+    ReplyToAddresses: ["info@filebloc.com"]
+  })
+
+  sesClient.send(sendCommand).catch(console.error)
+}
 
 export async function POST(request: Request) {
   const { email = "" } = (await request.json()) || { email: "" }
@@ -26,23 +64,33 @@ export async function POST(request: Request) {
   }
 
   try {
-    const exists = () => fql`Users.where(.email == ${email}) `
-    const createUser = `
+    console.log(email)
+    const notexists = () => fql`Users.where(.email == ${email}).count() == 0`
+    const createUser = () => fql`
       Users.create(${{ email }}) {
         id,
         ts
       }
     `
     const query = fql`
-      if (${exists()} == null) {
-        ${createUser}
+      if (${notexists()}) {
+        ${createUser()}
+        "user created"
+      } else {
+        "already exists"
       }
     `
-    await faunaClient.query(query, {
+    const action = await faunaClient.query(query, {
       arguments: {
         email
       }
     })
+
+    console.log({ action })
+
+    if (action.data === "user created") {
+      await sendEmail(email)
+    }
 
     return NextResponse.json(
       {
