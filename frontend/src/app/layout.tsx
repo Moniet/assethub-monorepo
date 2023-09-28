@@ -12,7 +12,8 @@ const nunito = Nunito_Sans({
 export const metadata: Metadata = {
   title: "filebloc : Simplifying digital asset management for startups",
   description:
-    "Filebloc enables digital asset management directly from Slack. Directly, search, uploads, and manage permissions right in Slack."
+    "Filebloc enables digital asset management directly from Slack. Directly, search, upload, and manage permissions right in Slack.",
+  icons: ["/favicon.ico", "/filebloc-logo.png"]
 }
 
 export default function RootLayout({
